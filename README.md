@@ -17,17 +17,17 @@ has_many :buys
 
 ## items
 
-|Column   |Type      |Options                       |
-|---------|----------|------------------------------|
-|name     |string    |null: false                   |
-|text     |text      |null: false                   |
-|category |string    |null: false                   |
-|condition|string    |null: false                   |
-|postage  |string    |null: false                   |
-|area     |string    |null: false                   |
-|post_data|string    |null: false                   |
-|price    |integer   |null: false                   |
-|user     |references|null: false, foreign_key: true|
+|Column      |Type      |Options                       |
+|------------|----------|------------------------------|
+|name        |string    |null: false                   |
+|text        |text      |null: false                   |
+|category_id |integer   |null: false                   |
+|condition_id|integer   |null: false                   |
+|postage_id  |integer   |null: false                   |
+|area_id     |integer   |null: false                   |
+|post_data_id|integer   |null: false                   |
+|price       |integer   |null: false                   |
+|user        |references|null: false, foreign_key: true|
 
 ### Association
 belongs_to :user
@@ -50,7 +50,7 @@ has_one :order
 |Column       |Type      |Options                       |
 |-------------|----------|------------------------------|
 |post_code    |string    |null: false                   |
-|prefecture   |string    |null: false                   |
+|area_id      |integer   |null: false                   |
 |city         |string    |null: false                   |
 |address      |string    |null: false                   |
 |building_name|string    |                              |

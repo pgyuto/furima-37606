@@ -32,6 +32,7 @@ has_many :buys
 ### Association
 belongs_to :user
 belongs_to :buy
+has_one :buy
 
 ## buys
 
@@ -43,6 +44,7 @@ belongs_to :buy
 ### Association
 belongs_to :user
 belongs_to :item
+has_one :order
 
 ### orders
 |Column       |Type      |Options                       |
@@ -54,3 +56,6 @@ belongs_to :item
 |building_name|string    |                              |
 |phone_number |string    |null: false                   |
 |buy          |references|null: false, foreign_key: true|
+
+### Association
+belongs_to :buy

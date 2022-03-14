@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category, :condition, :postage, :area, :post_date
+  has_one_attached :image
 
   validates :name, :text, :price, presence: true
   validates :price, format: {with: /\A\d+\z/}

@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category, :condition, :postage, :area, :post_date
   has_one_attached :image
+  belongs_to :user
 
   validates :name, :text, :price, :image, presence: true
   validates :price, format: {with: /\A\[0-9]+\z/, message: "is invalid. Input half-width characters"}

@@ -60,40 +60,40 @@ RSpec.describe Item, type: :model do
       it 'ユーザーが紐付いていないと出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
       it 'priceが半角数字でなければ出品できない' do
-        @item.price = "５００"
+        @item.price = '５００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it 'priceが¥300〜9,999,999でなければ出品できない' do
-        @item.price = "100"
+        @item.price = '100'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it 'category_idが1なら出品できない' do
-        @item.category_id = "1"
+        @item.category_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it 'condition_idが1なら出品できない' do
-        @item.condition_id = "1"
+        @item.condition_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
       it 'postage_idが1なら出品できない' do
-        @item.postage_id = "1"
+        @item.postage_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Postage can't be blank")
       end
       it 'area_idが1なら出品できない' do
-        @item.area_id = "1"
+        @item.area_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Area can't be blank")
       end
       it 'post_date_idが1なら出品できない' do
-        @item.post_date_id = "1"
+        @item.post_date_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Post date can't be blank")
       end

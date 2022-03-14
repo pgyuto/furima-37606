@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
   end
 
   private
+
   def item_params
     params.require(:item).permit(
       :name, :text, :category_id, :condition_id, :postage_id, :area_id, :post_date_id, :price, :image

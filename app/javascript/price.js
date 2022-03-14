@@ -3,9 +3,11 @@ function price () {
   itemPrice.addEventListener('input', () => {
     const itemPriceValue = itemPrice.value;
     const addTaxPrice = document.getElementById("add-tax-price");
-    addTaxPrice.innerHTML = Math.floor(itemPriceValue * 0.1);
+    const tax_price = Math.floor(itemPriceValue * 0.1);
+    addTaxPrice.innerHTML = tax_price.toLocaleString();
     const profit = document.getElementById("profit");
-    profit.innerHTML = Math.floor(itemPriceValue - addTaxPrice.innerHTML);
+    const profit_value = Math.floor(itemPriceValue - tax_price);
+    profit.innerHTML = profit_value.toLocaleString();
   });
 };
 

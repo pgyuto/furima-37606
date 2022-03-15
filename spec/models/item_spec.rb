@@ -67,33 +67,38 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
-      it 'priceが¥300〜9,999,999でなければ出品できない' do
-        @item.price = '100'
+      it 'priceが¥300以下では出品できない' do
+        @item.price = 100
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
+      end
+      it 'priceが¥9,999,999以上では出品できない' do
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it 'category_idが1なら出品できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it 'condition_idが1なら出品できない' do
-        @item.condition_id = '1'
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
       it 'postage_idが1なら出品できない' do
-        @item.postage_id = '1'
+        @item.postage_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Postage can't be blank")
       end
       it 'area_idが1なら出品できない' do
-        @item.area_id = '1'
+        @item.area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Area can't be blank")
       end
       it 'post_date_idが1なら出品できない' do
-        @item.post_date_id = '1'
+        @item.post_date_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Post date can't be blank")
       end

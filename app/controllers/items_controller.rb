@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    if @item.update(item_params) 
+    if @item.update(item_params)
       redirect_to action: :show
     else
       render :edit
@@ -45,8 +45,6 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    unless current_user.id == Item.find(params[:id]).user.id
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless current_user.id == Item.find(params[:id]).user.id
   end
 end

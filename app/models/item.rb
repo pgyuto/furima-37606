@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   belongs_to :user
 
   validates :name, :text, :price, :image, presence: true
-  validates :price, numericality: { only_integer: true, message: 'is invalid. Input half-width characters'}
+  validates :price, numericality: { only_integer: true, message: 'is invalid. Input half-width characters' }
   validates :price,
             numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
                             message: 'is out of setting range' }

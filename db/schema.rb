@@ -58,8 +58,16 @@ ActiveRecord::Schema.define(version: 2022_03_17_033448) do
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "post_code", null: false
+    t.integer "area_id", null: false
+    t.string "city", null: false
+    t.string "address", null: false
+    t.string "building_name"
+    t.string "phone_number", null: false
+    t.bigint "buy_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["buy_id"], name: "index_orders_on_buy_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -84,4 +92,5 @@ ActiveRecord::Schema.define(version: 2022_03_17_033448) do
   add_foreign_key "buys", "items"
   add_foreign_key "buys", "users"
   add_foreign_key "items", "users"
+  add_foreign_key "orders", "buys"
 end

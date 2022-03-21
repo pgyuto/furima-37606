@@ -69,6 +69,11 @@ RSpec.describe BuyOrder, type: :model do
         @buy_order.valid?
         expect(@buy_order.errors.full_messages).to include("Phone number number is too short")
       end
+      it 'tokenが空だと購入できない' do
+        @buy_order.token = nil
+        @buy_order.valid?
+        expect(@buy_order.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end

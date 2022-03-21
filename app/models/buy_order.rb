@@ -1,6 +1,6 @@
 class BuyOrder
   include ActiveModel::Model
-  attr_accessor :post_code, :area_id, :city, :address, :building_name, :phone_number, :user_id, :item_id
+  attr_accessor :post_code, :area_id, :city, :address, :building_name, :phone_number, :user_id, :item_id, :token
 
   with_options presence: true do
     validates :user_id
@@ -10,9 +10,11 @@ class BuyOrder
     validates :city
     validates :address
     validates :phone_number, format: {with: /\A0\d{9,10}\z/, message: "number is too short"}
+    validates :token
   end
   def save
+    
     buy = Buy.create(user_id: user_id, item_id: item_id)
-    Address.create(post_code: post_code, area_id: area_id, city: city, address: address, building_name: building_name, phone_number:phone_number, buy_id: buy.id)
+    Order.create(post_code: post_code, area_id: area_id, city: city, address: address, building_name: building_name, phone_number:phone_number, buy_id: buy.id)
   end
 end

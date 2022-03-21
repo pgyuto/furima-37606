@@ -8,6 +8,7 @@ class BuysController < ApplicationController
     @buy_order = BuyOrder.new(buy_params)
     @item = Item.find(params[:item_id])
     if @buy_order.valid?
+      pay_item
       @buy_order.save
       redirect_to root_path
     else
@@ -19,7 +20,16 @@ class BuysController < ApplicationController
   
   def buy_params
     params.require(:buy_order).permit(:post_code, :area_id, :city, :address, :building_name, :phone_number).merge(
-      user_id: current_user.id, item_id: params[:item_id]
+      token: params[:token], user_id: current_user.id, item_id: params[:item_id]
+    )
+  end
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
+    Payjp::Charge.create(
+      amount: @item.price,  
+      card: buy_params[:token],    
+      currency: 'jpy'                
     )
   end
 end

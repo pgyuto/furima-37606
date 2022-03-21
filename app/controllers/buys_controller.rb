@@ -38,8 +38,10 @@ class BuysController < ApplicationController
   end
 
   def move_to_root_path
-    if current_user.id == Item.find(params[:item_id]).user.id || Item.find(params[:item_id]).buy.present?
-      redirect_to root_path 
+    if current_user.id == Item.find(params[:item_id]).user.id
+      if Item.find(params[:item_id]).buy.present?
+        redirect_to root_path 
+      end
     end
   end
 end

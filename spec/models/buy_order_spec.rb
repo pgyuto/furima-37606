@@ -74,6 +74,16 @@ RSpec.describe BuyOrder, type: :model do
         @buy_order.valid?
         expect(@buy_order.errors.full_messages).to include("Token can't be blank")
       end
+      it '電話番号が12桁以上では購入できない' do
+        @buy_order.phone_number = '000000000000'
+        @buy_order.valid?
+        expect(@buy_order.errors.full_messages).to include('Phone number number is too short')
+      end
+      it '電話番号に半角数字以外が含まれている場合は購入できない' do
+        @buy_order.phone_number = '000００００００００'
+        @buy_order.valid?
+        expect(@buy_order.errors.full_messages).to include('Phone number number is too short')
+      end
     end
   end
 end

@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :post_date
   has_one_attached :image
   belongs_to :user
+  has_one :buy
 
   validates :name, :text, :price, :image, presence: true
   validates :price, numericality: { only_integer: true, message: 'is invalid. Input half-width characters' }

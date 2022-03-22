@@ -25,27 +25,27 @@ RSpec.describe Item, type: :model do
       it 'category_id:必須' do
         @item.category_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category を入力してください")
+        expect(@item.errors.full_messages).to include('Category を入力してください')
       end
       it 'condition_id:必須' do
         @item.condition_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition を入力してください")
+        expect(@item.errors.full_messages).to include('Condition を入力してください')
       end
       it 'postage_id:必須' do
         @item.postage_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Postage を入力してください")
+        expect(@item.errors.full_messages).to include('Postage を入力してください')
       end
       it 'area_id:必須' do
         @item.area_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area を入力してください")
+        expect(@item.errors.full_messages).to include('Area を入力してください')
       end
       it 'post_date_id:必須' do
         @item.post_date_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Post date を入力してください")
+        expect(@item.errors.full_messages).to include('Post date を入力してください')
       end
       it 'price:必須' do
         @item.price = ''
@@ -80,27 +80,27 @@ RSpec.describe Item, type: :model do
       it 'category_idが1なら出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category を入力してください")
+        expect(@item.errors.full_messages).to include('Category を入力してください')
       end
       it 'condition_idが1なら出品できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition を入力してください")
+        expect(@item.errors.full_messages).to include('Condition を入力してください')
       end
       it 'postage_idが1なら出品できない' do
         @item.postage_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Postage を入力してください")
+        expect(@item.errors.full_messages).to include('Postage を入力してください')
       end
       it 'area_idが1なら出品できない' do
         @item.area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area を入力してください")
+        expect(@item.errors.full_messages).to include('Area を入力してください')
       end
       it 'post_date_idが1なら出品できない' do
         @item.post_date_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Post date を入力してください")
+        expect(@item.errors.full_messages).to include('Post date を入力してください')
       end
     end
   end

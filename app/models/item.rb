@@ -15,5 +15,5 @@ class Item < ApplicationRecord
             numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
                             message: 'を¥300〜9,999,999で入力してください' }
   validates :category_id, :condition_id, :postage_id, :area_id, :post_date_id,
-            numericality: { other_than: 1, message: "を入力してください" }
+            numericality: { other_than: 1, message: 'を入力してください' }
 end

@@ -57,17 +57,17 @@ RSpec.describe BuyOrder, type: :model do
       it 'area_idが1なら購入できない' do
         @buy_order.area_id = 1
         @buy_order.valid?
-        expect(@buy_order.errors.full_messages).to include('Area Select')
+        expect(@buy_order.errors.full_messages).to include('Area を入力してください')
       end
       it 'post_codeがハイフンなしだと購入できない' do
         @buy_order.post_code = '1234567'
         @buy_order.valid?
-        expect(@buy_order.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
+        expect(@buy_order.errors.full_messages).to include('Post code をハイフン(-)を含んだ半角数字で入力してください')
       end
       it 'phone_numberが9桁以下だと購入できない' do
         @buy_order.phone_number = '123456789'
         @buy_order.valid?
-        expect(@buy_order.errors.full_messages).to include('Phone number number is too short')
+        expect(@buy_order.errors.full_messages).to include('Phone number を半角数字で入力してください')
       end
       it 'tokenが空だと購入できない' do
         @buy_order.token = nil
@@ -77,12 +77,12 @@ RSpec.describe BuyOrder, type: :model do
       it '電話番号が12桁以上では購入できない' do
         @buy_order.phone_number = '000000000000'
         @buy_order.valid?
-        expect(@buy_order.errors.full_messages).to include('Phone number number is too short')
+        expect(@buy_order.errors.full_messages).to include('Phone number を半角数字で入力してください')
       end
       it '電話番号に半角数字以外が含まれている場合は購入できない' do
         @buy_order.phone_number = '000００００００００'
         @buy_order.valid?
-        expect(@buy_order.errors.full_messages).to include('Phone number number is too short')
+        expect(@buy_order.errors.full_messages).to include('Phone number を半角数字で入力してください')
       end
     end
   end

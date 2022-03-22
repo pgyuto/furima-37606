@@ -25,7 +25,7 @@ has_many :buys
 |condition_id|integer   |null: false                   |
 |postage_id  |integer   |null: false                   |
 |area_id     |integer   |null: false                   |
-|post_data_id|integer   |null: false                   |
+|post_date_id|integer   |null: false                   |
 |price       |integer   |null: false                   |
 |user        |references|null: false, foreign_key: true|
 

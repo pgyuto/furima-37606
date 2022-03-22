@@ -10,10 +10,10 @@ class Item < ApplicationRecord
   has_one :buy
 
   validates :name, :text, :price, :image, presence: true
-  validates :price, numericality: { only_integer: true, message: 'is invalid. Input half-width characters' }
+  validates :price, numericality: { only_integer: true, message: 'を半角数字のみで入力してください' }
   validates :price,
             numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
-                            message: 'is out of setting range' }
+                            message: 'を¥300〜9,999,999で入力してください' }
   validates :category_id, :condition_id, :postage_id, :area_id, :post_date_id,
-            numericality: { other_than: 1, message: "can't be blank" }
+            numericality: { other_than: 1, message: "を入力してください" }
 end
